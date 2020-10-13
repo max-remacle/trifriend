@@ -1,8 +1,11 @@
 import React from 'react'
+import Warzone from './Warzone'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <>
+      <Warzone />
+    </>
   )
 }
 
