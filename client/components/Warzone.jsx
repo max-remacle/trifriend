@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {getWarzoneStats} from '../api'
 
 const Warzone = ({test}) =>{
 
@@ -12,7 +11,6 @@ const Warzone = ({test}) =>{
     //         })
     //         .catch(err => console.log(err))
     //   }, [])
-    getWarzoneStats()
     console.log(test)
 
     return(
