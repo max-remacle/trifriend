@@ -1,13 +1,11 @@
 
 import { combineReducers } from 'redux'
 
-const stats = {
-    wins: 46,
-    kills: 500
-}
+import stats from './stats.reducer'
+
 
 const reducers = combineReducers({
-    test: () => stats
+    stats
 })
 
 export default reducers
