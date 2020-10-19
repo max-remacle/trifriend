@@ -21,7 +21,7 @@ const Warzone = ({dispatch, stats}) =>{
       <>
         <h1>Warzone Stats</h1>
         <ul>
-         {/* {stats.br.kills? <li>Kills: {stats.br.kills}</li>:"no stats"} */}
+         {stats.br.kills? <li>Kills: {stats.br.kills}</li>:"no stats"}
         </ul>
       </>
     )
