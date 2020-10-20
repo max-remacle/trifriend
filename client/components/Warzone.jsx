@@ -18,14 +18,20 @@ const Warzone = ({dispatch, stats}) =>{
       }, [])
     
      
-      console.log(stats)
     return(
       <>
         <h1>Warzone Stats</h1>
-        {loading ? "Loading Stats...":
+        {loading ? "Loading Stats...":  
         <ul>
-          <li>Kills: {stats.br.kills}</li>
           <li>Wins: {stats.br.wins}</li>  
+          <li>Top Five: {stats.br.topFive}</li>  
+          <li>Top Ten: {stats.br.topTen}</li>  
+          <li>Kills: {stats.br.kills}</li>
+          <li>Downs: {stats.br.downs}</li>  
+          <li>Deaths: {stats.br.deaths}</li>  
+          <li>K/D Ratio: {stats.br.kdRatio}</li>  
+          <li>Games Played: {stats.br.gamesPlayed}</li>  
+          <li>Time Played: {(stats.br.timePlayed)/3600}</li>  
         </ul>}
       </>
     )
