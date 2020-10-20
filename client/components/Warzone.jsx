@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react'
+import React , {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import {getWarzoneStats} from '../api'
 import {setStats} from '../actions'
@@ -6,23 +6,27 @@ import {setStats} from '../actions'
 
 const Warzone = ({dispatch, stats}) =>{
 
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
           getWarzoneStats()
             .then(stats => {
               dispatch(setStats(stats))
-              return null
+              setLoading(false)
             })
             .catch(err => console.log(err))
       }, [])
-
-      console.log(stats.br)
-
+    
+     
+      console.log(stats)
     return(
       <>
         <h1>Warzone Stats</h1>
+        {loading ? "Loading Stats...":
         <ul>
-         {stats.br.kills? <li>Kills: {stats.br.kills}</li>:"no stats"}
-        </ul>
+          <li>Kills: {stats.br.kills}</li>
+          <li>Wins: {stats.br.wins}</li>  
+        </ul>}
       </>
     )
 }
