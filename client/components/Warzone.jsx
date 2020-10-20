@@ -18,7 +18,6 @@ const Warzone = ({dispatch, stats}) =>{
       }, [])
     
      
-      console.log(stats )
     return(
       <>
         <h1>Warzone Stats</h1>

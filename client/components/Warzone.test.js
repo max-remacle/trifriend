@@ -29,10 +29,10 @@ beforeEach(()=>{
 
 test('Displays a list of Stats',async()=>{
     render(<Provider store={store}><App /></Provider>)
-    let list = screen.getAllByRole('listitem')
     await waitFor(() => store.dispatch.mock.calls.length == 1)
-    expect(list.length).toBe(2)
-    expect(list[0].innerHTML).toMatch(/Kills/)
+    let list = screen.getAllByRole('listitem')
+    expect(list.length).toBe(9)
+    expect(list[0].innerHTML).toMatch(/Wins/)
 })
 
 test('fetch a list of stats from api when component mounts',()=>{
