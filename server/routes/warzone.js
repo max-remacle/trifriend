@@ -4,7 +4,6 @@ const request = require('superagent')
 
 const {getSingleWarzoneAccount} = require('../db')
 
-
 const router = express.Router()
 
 
