@@ -7,9 +7,9 @@ import {setStats} from '../actions'
 const Warzone = ({dispatch, stats}) =>{
 
     const [loading, setLoading] = useState(true)
-
+// account ID currently hardcoded in
     useEffect(() => {
-          getWarzoneStats()
+          getWarzoneStats(1)
             .then(stats => {
               dispatch(setStats(stats))
               setLoading(false)
