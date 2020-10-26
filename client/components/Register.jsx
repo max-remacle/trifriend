@@ -24,11 +24,11 @@ function Register(props) {
     event.preventDefault();
     const { firstName, lastName, email, password, confirmPassword } = newUser;
 
-    if ((password = confirmPassword)) {
+    if (password === confirmPassword) {
       register({ firstName, lastName, username: email, password }, { baseUrl })
       .then((token) => {
         if (isAuthenticated()) {
-          props.history.push("/dashboard");
+          props.history.push("/");
         }
       })
       .catch(err => console.log(err))

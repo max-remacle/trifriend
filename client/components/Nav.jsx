@@ -8,7 +8,7 @@ const Nav = (props) => {
   
   const handleClick = () => {
     logOff();
-    if (!isAuthenticated()) {F
+    if (!isAuthenticated()) {
       props.history.push("/");
     }
   };
@@ -35,9 +35,6 @@ const Nav = (props) => {
             <h2>Authenticateds</h2>
             <button onClick={handleClick}>Log off</button>
 
-          <Switch>
-
-          </Switch>
         </IfAuthenticated>
       </ul>
       </>
