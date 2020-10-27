@@ -10,14 +10,12 @@ const Warzone = ({dispatch, stats, user}) =>{
 // account ID currently hardcoded in
 
     useEffect(() => {
-        if(id){
           getWarzoneStats(1)
             .then(stats => {
               dispatch(setStats(stats))
               setLoading(false)
             })
             .catch(err => console.log(err))
-        }
       }, [])
     
      

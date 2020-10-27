@@ -1,8 +1,8 @@
 const request = require('supertest')
-const { getSingleWarzoneAccount } = require('../db')
+const { getSingleWarzoneAccount } = require('../database/db')
 const server = require('../server')
 
-jest.mock('../db', () => ({
+jest.mock('../database/db', () => ({
     getSingleWarzoneAccount: jest.fn()
   }))
 
