@@ -4,17 +4,20 @@ import {getWarzoneStats} from '../api'
 import {setStats} from '../actions'
 
 
-const Warzone = ({dispatch, stats}) =>{
+const Warzone = ({dispatch, stats, user}) =>{
 
     const [loading, setLoading] = useState(true)
 // account ID currently hardcoded in
+
     useEffect(() => {
+        if(id){
           getWarzoneStats(1)
             .then(stats => {
               dispatch(setStats(stats))
               setLoading(false)
             })
             .catch(err => console.log(err))
+        }
       }, [])
     
      
@@ -40,7 +43,8 @@ const Warzone = ({dispatch, stats}) =>{
 
 const mapStateToProps = (state)=>{
     return {
-      stats: state.stats
+      stats: state.stats,
+      user:state.user
     }
   }
-  export default connect(mapStateToProps)(Warzone)
+export default connect(mapStateToProps)(Warzone)
