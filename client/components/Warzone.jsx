@@ -4,10 +4,11 @@ import {getWarzoneStats} from '../api'
 import {setStats} from '../actions'
 
 
-const Warzone = ({dispatch, stats}) =>{
+const Warzone = ({dispatch, stats, user}) =>{
 
     const [loading, setLoading] = useState(true)
 // account ID currently hardcoded in
+
     useEffect(() => {
           getWarzoneStats(1)
             .then(stats => {
@@ -40,7 +41,8 @@ const Warzone = ({dispatch, stats}) =>{
 
 const mapStateToProps = (state)=>{
     return {
-      stats: state.stats
+      stats: state.stats,
+      user:state.user
     }
   }
-  export default connect(mapStateToProps)(Warzone)
+export default connect(mapStateToProps)(Warzone)

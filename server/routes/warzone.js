@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const request = require('superagent')
 
-const {getSingleWarzoneAccount} = require('../db')
+const {getSingleWarzoneAccount} = require('../database/db')
 
 const router = express.Router()
 
