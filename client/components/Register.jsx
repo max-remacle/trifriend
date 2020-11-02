@@ -28,7 +28,7 @@ function Register(props) {
       register({ firstName, lastName, username: email, password }, { baseUrl })
       .then((token) => {
         if (isAuthenticated()) {
-          props.history.push("/");
+          props.history.push("/dashboard");
         }
       })
       .catch(err => console.log(err))

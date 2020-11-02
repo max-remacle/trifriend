@@ -6,6 +6,7 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Warzone from "./Warzone";
+import Accounts from "./Accounts";
 
 const App = () => { 
   return (
@@ -32,6 +33,7 @@ const App = () => {
         }}
       />
       <Route exact path="/warzone" component={Warzone} />
+      <Route exact path="/accounts" component={Accounts} />
     </>
   );
 };
