@@ -32,7 +32,18 @@ const Nav = (props) => {
           </Link>
         </IfNotAuthenticated>
         <IfAuthenticated>
-            <h2>Authenticateds</h2>
+          <Link to="/warzone">
+            <li>Warzone</li>
+          </Link>
+          <Link to="/league">
+            <li>League of Legends</li>
+          </Link>
+          <Link to="/valorant">
+            <li>Valorant</li>
+          </Link>
+          <Link to="/accounts">
+            <li>Accounts</li>
+          </Link>
             <button onClick={handleClick}>Log off</button>
 
         </IfAuthenticated>

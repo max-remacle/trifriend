@@ -6,3 +6,10 @@ export function getWarzoneStats(id){
         .get(`/api/v1/warzone/${id}`)
         .then(res => res.body)
 }
+
+
+export function getUserAccounts(id){
+    return request
+        .get(`/api/v1/accounts/${id}`)
+        .then(res => res.body)
+}

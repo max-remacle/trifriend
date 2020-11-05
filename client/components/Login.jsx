@@ -31,7 +31,7 @@ const Login = (props) => {
         props.dispatch(setUserInfo(token))
         if (isAuthenticated()) {
           console.log('Logged in')
-          props.history.push('/warzone')
+          props.history.push('/dashboard')
         }
       })
       .catch(err => console.log(err))

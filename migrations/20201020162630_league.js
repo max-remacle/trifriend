@@ -4,6 +4,7 @@ exports.up = function(knex) {
       table.increments('id').primary().unique()
       table.string('user_name')
       table.integer('user_id')
+      table.integer('game_id')
   })
 };
 

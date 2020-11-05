@@ -21,9 +21,5 @@ router.get('/:id', (req,res) => {
   })
 
 
-function replaceHash(){
-
-}
-
 
   module.exports = router
