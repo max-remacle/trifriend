@@ -21,7 +21,7 @@ const Accounts = ({dispatch, accounts}) =>{
         .catch(err => console.log(err))
     },[])
     return(
-        <ul>{accounts.map(account => <li>{account.user_name}</li>)}</ul>
+        <ul>{accounts.map(account => <li>{account.user_name.replace('%2523','#')}</li>)}</ul>
     )
 }
 
