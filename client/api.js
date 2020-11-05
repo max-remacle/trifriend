@@ -7,10 +7,9 @@ export function getWarzoneStats(id){
         .then(res => res.body)
 }
 
-let accounts= [
-    {id:1, user_name:'Bossman', platform:'Battle',user_id:1},
-    {id:2, user_name:'Aeollus', platform:'Battle',user_id:1}
-]
-export function getUserAccounts(){
-    return Promise.resolve(accounts)
+
+export function getUserAccounts(id){
+    return request
+        .get(`/api/v1/accounts/${id}`)
+        .then(res => res.body)
 }

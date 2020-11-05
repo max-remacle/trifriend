@@ -13,7 +13,7 @@ const Accounts = ({dispatch, accounts}) =>{
     // Stretch ability to update accounts
     
     useEffect(() =>{
-        getUserAccounts()
+        getUserAccounts(1)
         .then(accounts =>{
             console.log(accounts);
             dispatch(setAccounts(accounts))
