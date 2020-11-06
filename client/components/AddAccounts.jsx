@@ -5,20 +5,29 @@ const AddAccount = ({ user }) => {
   const [game, setGame] = useState("Choose Game");
 
   const [account, setAccount] = useState({
-    userName: "",
+    username:'',
+    platform:''
   });
 
-  const handleChange = (event) => {
+  const handleGameSelection = (event) => {
     event.preventDefault();
     setGame(event.target.value);
   };
+
+
+  const handleChange = (event) =>{
+      event.preventDefault()
+      const { name, value } = event.target;
+      setAccount({ ...account, [name]: value });
+  }
+  console.log(account);
   return (
     <>
       <button onClick={() => setShowForm(!showForm)}>Add Account</button>
       {showForm ? (
         <form>
           <label htmlFor="game">Choose a game:</label>
-          <select name="name" id="game" onChange={handleChange}>
+          <select name="name" id="game" onChange={handleGameSelection}>
             <option value="Choose Game">Choose Game</option>
             <option value="Warzone">Warzone</option>
             <option value="League of Legends">League of Legends</option>
@@ -36,14 +45,19 @@ const AddAccount = ({ user }) => {
             id="username"
             name="username"
             placeholder="Username"
+            value={account.username}
+            onChange={handleChange}
           ></input>
           <label htmlFor="platform">Platform</label>
-          <input
-            type="platform"
-            id="platform"
-            name="platform"
-            placeholder="platform"
-          ></input>
+          <select name="platform" id="platform" onChange={handleChange}>
+            <option value="Choose Platform">Choose Platform</option>
+            <option value="battle">Battle.net</option>
+            <option value="psn">PSN</option>
+            <option value="xbl">Xbox Live</option>
+            <option value="steam">Steam</option>
+            <option value="uno">Activision ID</option>
+            <option value="acti">Activision Tag</option>
+          </select>
           <button type="submit">Submit</button>
         </form>
       ) : (
@@ -57,6 +71,8 @@ const AddAccount = ({ user }) => {
             id="username"
             name="username"
             placeholder="Username"
+            value={account.username}
+            onChange={handleChange}
           ></input>
           <button type="submit">Submit</button>
         </form>
@@ -71,6 +87,8 @@ const AddAccount = ({ user }) => {
             id="username"
             name="username"
             placeholder="Username"
+            value={account.username}
+            onChange={handleChange}
           ></input>
           <button type="submit">Submit</button>
         </form>

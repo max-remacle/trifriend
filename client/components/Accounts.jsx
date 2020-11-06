@@ -18,11 +18,13 @@ const Accounts = ({ dispatch, accounts, user }) => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  let n = 0
   return (
     <>
       <ul>
         {accounts.map((account) => (
-          <li>{account.user_name.replace("%2523", "#")}</li>
+          <li key={n+=1}>{account.user_name.replace("%2523", "#")}</li>
         ))}
       </ul>
       <AddAccount user={user} />
