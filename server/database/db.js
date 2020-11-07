@@ -28,10 +28,38 @@ async function combineAccounts(userId, db=database){
     return combined
 }
 
+function addWarzoneAccount(id, account, db=database){
+    return db('warzone')
+    .insert({
+        user_name:account.username,
+        game_id: 1,
+        user_id: id,
+        platform:account.platform
+    })
+}
+function addLeagueAccount(id, account, db=database){
+    return db('league')
+    .insert({
+        user_name:account.username,
+        game_id: 2,
+        user_id: id,
+    })
+}
+function addValorantAccount(id, account, db=database){
+    return db('valorant')
+    .insert({
+        user_name:account.username,
+        game_id: 3,
+        user_id: id,
+    })
+}
 
 module.exports = {
     getWarzoneAccounts,
     getSingleWarzoneAccount,
     getLeagueAccounts,
-    combineAccounts
+    combineAccounts,
+    addWarzoneAccount,
+    addLeagueAccount,
+    addValorantAccount
 }

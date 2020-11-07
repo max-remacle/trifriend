@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import {postAccount} from '../api'
+
 const AddAccount = ({ user }) => {
   const [showForm, setShowForm] = useState(false);
   const [game, setGame] = useState("Choose Game");
@@ -14,13 +16,24 @@ const AddAccount = ({ user }) => {
     setGame(event.target.value);
   };
 
-
   const handleChange = (event) =>{
       event.preventDefault()
       const { name, value } = event.target;
       setAccount({ ...account, [name]: value });
   }
-  console.log(account);
+
+  const handleSumbit = (event) =>{
+      event.preventDefault()
+      const { id } = user
+      postAccount(id, account, game)
+        .then(account =>{
+            console.log(account);
+        })
+        .catch(err => console.log(err.message))
+  }
+  
+ console.log(account);
+ 
   return (
     <>
       <button onClick={() => setShowForm(!showForm)}>Add Account</button>
@@ -58,7 +71,7 @@ const AddAccount = ({ user }) => {
             <option value="uno">Activision ID</option>
             <option value="acti">Activision Tag</option>
           </select>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handleSumbit}>Submit</button>
         </form>
       ) : (
         ""
@@ -74,7 +87,7 @@ const AddAccount = ({ user }) => {
             value={account.username}
             onChange={handleChange}
           ></input>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handleSumbit}>Submit</button>
         </form>
       ) : (
         ""
@@ -90,7 +103,7 @@ const AddAccount = ({ user }) => {
             value={account.username}
             onChange={handleChange}
           ></input>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handleSumbit}>Submit</button>
         </form>
       ) : (
         ""

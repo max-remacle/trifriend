@@ -12,21 +12,26 @@ const Accounts = ({ dispatch, accounts, user }) => {
   // Ability to remove accounts
   // Stretch ability to update accounts
   useEffect(() => {
-    getUserAccounts(1)
+    getUserAccounts(user.id)
       .then((accounts) => {
         dispatch(setAccounts(accounts));
       })
       .catch((err) => console.log(err));
   }, []);
 
-  let n = 0
+  const noAccounts = accounts.length == 0;
+  let n = 0;
   return (
     <>
-      <ul>
-        {accounts.map((account) => (
-          <li key={n+=1}>{account.user_name.replace("%2523", "#")}</li>
-        ))}
-      </ul>
+      {noAccounts ? (
+        "No accounts added"
+      ) : (
+        <ul>
+          {accounts.map((account) => (
+            <li key={(n += 1)}>{account.user_name.replace("%2523", "#")}</li>
+          ))}
+        </ul>
+      )}
       <AddAccount user={user} />
     </>
   );
@@ -35,7 +40,7 @@ const Accounts = ({ dispatch, accounts, user }) => {
 const mapStateToProps = (state) => {
   return {
     accounts: state.accounts,
-    user: state.user
+    user: state.user,
   };
 };
 export default connect(mapStateToProps)(Accounts);

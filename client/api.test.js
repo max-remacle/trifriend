@@ -1,5 +1,5 @@
 import nock from 'nock'
-import { getWarzoneStats } from './api'
+import { getWarzoneStats, postAccount } from './api'
 
 test('getwarzoneStats gets stats from server', () =>{
     nock(/localhost/)
@@ -12,4 +12,14 @@ test('getwarzoneStats gets stats from server', () =>{
             expect(stats.length).toBe(1)
         })
     
+})
+
+test('posts an account for a user', () =>{
+    const scope = nock(/localhost/)
+        .post('/api/v1/accounts/3')
+        .reply(201)
+    return postAccount(3,{username: 'test', platform:'battle'})
+        .then(() =>{
+            expect(scope.isDone()).toBe(true)
+        })
 })

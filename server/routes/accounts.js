@@ -1,5 +1,5 @@
 const express = require('express')
-const { getWarzoneAccounts, combineAccounts } = require('../database/db')
+const { combineAccounts, addWarzoneAccount, addLeagueAccount, addValorantAccount } = require('../database/db')
 const router = express.Router()
 
 router.get('/:id',(req,res)=>{
@@ -11,6 +11,29 @@ router.get('/:id',(req,res)=>{
         .catch(err =>console.log(err))
 })
 
+router.post('/:id',(req,res) =>{
+    const id = Number(req.params.id)
+    const account = req.body
+    switch(account.game){
+        case "Warzone":
+            addWarzoneAccount(id, account)
+            .then(account =>{
+                res.status(201).json(account)
+            })
+        case "League of Legends":
+            addLeagueAccount(id, account)
+            .then(account =>{
+                res.status(201).json(account)
+            })
+        case "Valorant":
+            addValorantAccount(id, account)
+            .then(account =>{
+                res.status(201).json(account)
+            })
+        default:
+            console.log("please select a game");
+    }
+})
 
 
 module.exports = router
