@@ -10,6 +10,7 @@ const Account = (props) =>{
     const deleteStyle = {color: 'red', marginLeft:'7px', cursor:'pointer', fontSize:'25px'}
     return (
         <li
+        style={{cursor:'pointer'}}
         onMouseEnter={() => setShowControls(!showControls)}
         onMouseLeave={() => setShowControls(!showControls)}
         >
