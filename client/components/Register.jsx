@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux'
 import { register, isAuthenticated } from "authenticare/client";
 import { baseApiUrl as baseUrl } from "../config";
+import {setUserInfo} from '../actions'
+
 
 function Register(props) {
   const [newUser, setNewUser] = useState({
@@ -27,6 +30,7 @@ function Register(props) {
     if (password === confirmPassword) {
       register({ firstName, lastName, username: email, password }, { baseUrl })
       .then((token) => {
+        props.dispatch(setUserInfo(token))
         if (isAuthenticated()) {
           props.history.push("/dashboard");
         }
@@ -48,4 +52,11 @@ function Register(props) {
     </>
   );
 }
-export default Register;
+
+const mapStateToProps = (state)=>{
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Register);

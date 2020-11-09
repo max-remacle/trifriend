@@ -7,9 +7,15 @@ export function getWarzoneStats(id){
         .then(res => res.body)
 }
 
-
 export function getUserAccounts(id){
     return request
         .get(`/api/v1/accounts/${id}`)
+        .then(res => res.body)
+}
+
+export function postAccount(id, account, game){
+    return request
+        .post(`/api/v1/accounts/${id}`)
+        .send({username:account.username, platform:account.platform, game:game})
         .then(res => res.body)
 }
