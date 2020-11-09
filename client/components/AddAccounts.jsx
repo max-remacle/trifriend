@@ -27,7 +27,6 @@ const AddAccount = ({ user }) => {
       const { id } = user
       postAccount(id, account, game)
         .then(account =>{
-            console.log(account);
         })
         .catch(err => console.log(err.message))
   }

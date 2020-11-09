@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 import { getUserAccounts } from "../api";
 import { setAccounts } from "../actions";
 import AddAccount from "./AddAccounts";
+import Account from './Account'
 
 const Accounts = ({ dispatch, accounts, user }) => {
-  // Get all the accounts for a given account id for all games
-  // Display accounts for a given account id
-  // Ability to add accounts to database
   // Ability to remove accounts
   // Stretch ability to update accounts
   useEffect(() => {
@@ -20,18 +18,39 @@ const Accounts = ({ dispatch, accounts, user }) => {
   }, []);
 
   const noAccounts = accounts.length == 0;
-  let n = 0;
+  let n = 0
   return (
     <>
-      {noAccounts ? (
-        "No accounts added"
-      ) : (
-        <ul>
-          {accounts.map((account) => (
-            <li key={(n += 1)}>{account.user_name.replace("%2523", "#")}</li>
-          ))}
-        </ul>
-      )}
+      <h3>Warzone</h3>
+      <ul>
+        {accounts.map((account) =>
+          account.game_id == 1 ? (
+            <Account key={n += 1} account={account.user_name.replace("%2523", "#")} />
+          ) : (
+            ""
+          )
+        )}
+      </ul>
+      <h3>League of Legends</h3>
+      <ul>
+        {accounts.map((account) =>
+          account.game_id == 2 ? (
+            <Account key={n += 1} account={account.user_name} />
+          ) : (
+            ""
+          )
+        )}
+      </ul>
+      <h3>Valorant</h3>
+      <ul>
+        {accounts.map((account) =>
+          account.game_id == 3 ? (
+            <Account key={n += 1} account={account.user_name} />
+          ) : (
+            ""
+          )
+        )}
+      </ul>
       <AddAccount user={user} />
     </>
   );

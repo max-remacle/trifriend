@@ -20,11 +20,17 @@ function getLeagueAccounts(userId, db=database){
     .where('user_id', userId)
     .select()
 }
+function getValorantAccounts(userId, db=database){
+    return db('valorant')
+    .where('user_id', userId)
+    .select()
+}
 
 async function combineAccounts(userId, db=database){
     const warzone = await getWarzoneAccounts(userId, db)
     const league = await getLeagueAccounts(userId,db)
-    const combined = warzone.concat(league)
+    const valorant = await getValorantAccounts(userId,db)
+    const combined = warzone.concat(league,valorant)
     return combined
 }
 
