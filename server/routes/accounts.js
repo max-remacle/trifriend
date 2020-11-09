@@ -20,16 +20,19 @@ router.post('/:id',(req,res) =>{
             .then(account =>{
                 res.status(201).json(account)
             })
+            break
         case "League of Legends":
             addLeagueAccount(id, account)
             .then(account =>{
                 res.status(201).json(account)
             })
+            break
         case "Valorant":
             addValorantAccount(id, account)
             .then(account =>{
                 res.status(201).json(account)
             })
+            break
         default:
             console.log("please select a game");
     }
