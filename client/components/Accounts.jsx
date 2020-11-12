@@ -17,7 +17,6 @@ const Accounts = ({ dispatch, accounts, user }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const noAccounts = accounts.length == 0;
   let n = 0
   return (
     <>
@@ -25,7 +24,7 @@ const Accounts = ({ dispatch, accounts, user }) => {
       <ul>
         {accounts.map((account) =>
           account.game_id == 1 ? (
-            <Account key={n += 1} account={account.user_name.replace("%2523", "#")} />
+            <Account key={n += 1} account={account} />
           ) : (
             ""
           )
@@ -35,7 +34,7 @@ const Accounts = ({ dispatch, accounts, user }) => {
       <ul>
         {accounts.map((account) =>
           account.game_id == 2 ? (
-            <Account key={n += 1} account={account.user_name} />
+            <Account key={n += 1} account={account} />
           ) : (
             ""
           )
@@ -45,7 +44,7 @@ const Accounts = ({ dispatch, accounts, user }) => {
       <ul>
         {accounts.map((account) =>
           account.game_id == 3 ? (
-            <Account key={n += 1} account={account.user_name} />
+            <Account key={n += 1} account={account} />
           ) : (
             ""
           )

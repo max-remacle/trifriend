@@ -19,3 +19,10 @@ export function postAccount(id, account, game){
         .send({username:account.username, platform:account.platform, game:game})
         .then(res => res.body)
 }
+
+export function deleteAccount(id, game_id){
+    return request
+        .delete(`/api/v1/accounts/${id}`)
+        .send({game_id})
+        .then(res => console.log(res.body))
+}
