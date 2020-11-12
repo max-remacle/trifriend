@@ -5,7 +5,6 @@ import {postAccount} from '../api'
 const AddAccount = ({ user }) => {
   const [showForm, setShowForm] = useState(false);
   const [game, setGame] = useState("Choose Game");
-
   const [account, setAccount] = useState({
     username:'',
     platform:''
@@ -22,11 +21,13 @@ const AddAccount = ({ user }) => {
       setAccount({ ...account, [name]: value });
   }
 
+
   const handleSumbit = (event) =>{
       event.preventDefault()
       const { id } = user
       postAccount(id, account, game)
         .then(account =>{
+          location.reload()
         })
         .catch(err => console.log(err.message))
   }

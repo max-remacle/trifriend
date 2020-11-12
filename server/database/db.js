@@ -34,38 +34,57 @@ async function combineAccounts(userId, db=database){
     return combined
 }
 
-function addWarzoneAccount(id, account, db=database){
-    return db('warzone')
-    .insert({
-        user_name:account.username,
-        game_id: 1,
-        user_id: id,
-        platform:account.platform
-    })
+function addAccount(userId, account, db=database){
+    switch(account.game){
+        case 'Warzone':
+            return db('warzone')
+            .insert({
+                user_name:account.username,
+                game_id: 1,
+                user_id: userId,
+                platform:account.platform
+            })
+        case 'League of Legends':
+            return db('league')
+            .insert({
+                user_name:account.username,
+                game_id: 2,
+                user_id: id,
+            })
+        case 'Valorant':
+            return db('valorant')
+            .insert({
+                user_name:account.username,
+                game_id: 3,
+                user_id: id,
+            })
+    }
 }
-function addLeagueAccount(id, account, db=database){
-    return db('league')
-    .insert({
-        user_name:account.username,
-        game_id: 2,
-        user_id: id,
-    })
+
+function deleteAccount(id, game_id, db=database){
+    if(!id) return Promise.reject('id must be specified')
+    switch(game_id){
+        case 1:
+            return db('warzone')
+                .where({id})
+                .delete()
+        case 2:
+            return db('league')
+                .where({id})
+                .delete()
+        case 3:
+           return db('valorant')
+                .where({id})
+                .delete()
+    }
 }
-function addValorantAccount(id, account, db=database){
-    return db('valorant')
-    .insert({
-        user_name:account.username,
-        game_id: 3,
-        user_id: id,
-    })
-}
+
 
 module.exports = {
     getWarzoneAccounts,
     getSingleWarzoneAccount,
     getLeagueAccounts,
     combineAccounts,
-    addWarzoneAccount,
-    addLeagueAccount,
-    addValorantAccount
+    addAccount,
+    deleteAccount
 }
