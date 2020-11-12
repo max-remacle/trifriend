@@ -49,14 +49,14 @@ function addAccount(userId, account, db=database){
             .insert({
                 user_name:account.username,
                 game_id: 2,
-                user_id: id,
+                user_id: userId,
             })
         case 'Valorant':
             return db('valorant')
             .insert({
                 user_name:account.username,
                 game_id: 3,
-                user_id: id,
+                user_id: userId,
             })
     }
 }

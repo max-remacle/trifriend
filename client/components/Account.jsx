@@ -13,7 +13,7 @@ const Account = (props) =>{
         const {id, game_id} = props.account
         deleteAccount(id, game_id)
             .then(() =>{
-                console.log('deleted');
+                location.reload()
             })     
     }
     
