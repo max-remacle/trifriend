@@ -2,7 +2,6 @@ import React , {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import {getWarzoneStats} from '../api'
 import {setStats} from '../actions'
-import { FaInfinity } from "react-icons/fa";
 
 const Warzone = ({dispatch, stats, accounts}) =>{
 
@@ -46,8 +45,7 @@ const Warzone = ({dispatch, stats, accounts}) =>{
           <li>Deaths: {stats.br.deaths}</li>  
           <li>K/D Ratio: {stats.br.kdRatio}</li>  
           <li>Games Played: {stats.br.gamesPlayed}</li>  
-          <li>Time Played: {(stats.br.timePlayed)/3600}</li>  
-          <li>Times carried Sonny: <FaInfinity /></li>  
+          <li>Time Played: {(stats.br.timePlayed)/3600}</li>   
         </ul>}
       </>
     )
