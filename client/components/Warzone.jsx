@@ -2,12 +2,13 @@ import React , {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import {getWarzoneStats} from '../api'
 import {setStats} from '../actions'
-
+import { FaInfinity } from "react-icons/fa";
 
 const Warzone = ({dispatch, stats, accounts}) =>{
 
     const [loading, setLoading] = useState(true)
-    const [account, setAccount] = useState(1)
+    const [account, setAccount] = useState(accounts[0].id)
+
 
     useEffect(() => {
           setLoading(true)
@@ -31,7 +32,6 @@ const Warzone = ({dispatch, stats, accounts}) =>{
         <form>
           <label htmlFor="account">Choose an Account:</label>
           <select name="name" id="account" onChange={handleAccountSelection}>
-            <option value='Choose Account'>Choose Account</option>
             {accounts.map(account => account.game_id == 1 ? <option key={account.id} value={account.id}>{account.user_name}</option>:'')}
           </select>
         </form>
@@ -47,6 +47,7 @@ const Warzone = ({dispatch, stats, accounts}) =>{
           <li>K/D Ratio: {stats.br.kdRatio}</li>  
           <li>Games Played: {stats.br.gamesPlayed}</li>  
           <li>Time Played: {(stats.br.timePlayed)/3600}</li>  
+          <li>Times carried Sonny: <FaInfinity /></li>  
         </ul>}
       </>
     )
