@@ -43,9 +43,9 @@ const Warzone = ({dispatch, stats, accounts}) =>{
           <li>Kills: {stats.br.kills}</li>
           <li>Downs: {stats.br.downs}</li>  
           <li>Deaths: {stats.br.deaths}</li>  
-          <li>K/D Ratio: {stats.br.kdRatio}</li>  
+          <li>K/D Ratio: {(stats.br.kdRatio).toFixed(2)}</li>  
           <li>Games Played: {stats.br.gamesPlayed}</li>  
-          <li>Time Played: {(stats.br.timePlayed)/3600}</li>   
+          <li>Time Played: {((stats.br.timePlayed)/3600).toFixed(0)}</li>   
         </ul>}
       </>
     )
