@@ -4,10 +4,8 @@ import {getWarzoneStats} from '../api'
 import {setStats} from '../actions'
 
 const Warzone = ({dispatch, stats, accounts}) =>{
-
     const [loading, setLoading] = useState(true)
-    const [account, setAccount] = useState(accounts[0].id)
-
+    const [account, setAccount] = useState(0)
 
     useEffect(() => {
           setLoading(true)
@@ -31,11 +29,11 @@ const Warzone = ({dispatch, stats, accounts}) =>{
         <form>
           <label htmlFor="account">Choose an Account:</label>
           <select name="name" id="account" onChange={handleAccountSelection}>
+            <option>Select an Account</option>
             {accounts.map(account => account.game_id == 1 ? <option key={account.id} value={account.id}>{account.user_name}</option>:'')}
           </select>
         </form>
-
-        {loading ? "Loading Stats...":  
+        {loading ? "Loading Stats...": stats == false ? "Please add or select an account to view stats" :
         <ul>
           <li>Wins: {stats.br.wins}</li>  
           <li>Top Five: {stats.br.topFive}</li>  
